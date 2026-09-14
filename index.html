@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PackSure — Redirecting</title>
+
+<!--
+  This is the GitHub Pages landing/redirect page for the PPT link.
+  To point it at the live app, change ONE line below: REDIRECT_URL.
+  Nothing else in this file needs to change.
+-->
+
+<!-- No-JS / slow-JS fallback: browser redirects on its own after 5s either way -->
+<meta http-equiv="refresh" content="5;url=https://www.google.com" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  :root {
+    --background: #f7f4ee;
+    --card: #fffdf9;
+    --foreground: #1c1b19;
+    --muted: #6b6a63;
+    --border: #ddd7c9;
+    --primary: #7a1f2b;
+    --primary-foreground: #f7f4ee;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 40px 36px;
+    text-align: center;
+  }
+
+  .seal {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+  }
+  .seal::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: "IBM Plex Serif", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  .tagline {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+
+  .status {
+    font-size: 14px;
+    color: var(--foreground);
+    margin-bottom: 4px;
+  }
+
+  .countdown {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .countdown strong {
+    color: var(--primary);
+    font-size: 16px;
+  }
+
+  button {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-foreground);
+    background: var(--primary);
+    border: none;
+    border-radius: 4px;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  button:hover { opacity: 0.9; }
+  button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+  .fallback {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .fallback a { color: var(--primary); }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="seal">PS</div>
+    <div class="eyebrow">ZenForge · Smart India Hackathon 2026</div>
+    <h1>PackSure</h1>
+    <p class="tagline">AI-Assisted Packaged Commodity Compliance System</p>
+
+    <p class="status">You're being redirected to the live demo…</p>
+    <p class="countdown">Redirecting in <strong id="count">5</strong>s</p>
+
+    <button id="go">Redirect now</button>
+
+    <p class="fallback">
+      Not redirected automatically? <a id="fallback-link" href="https://www.google.com">Click here</a>.
+    </p>
+  </div>
+
+  <script>
+    // ---- The only line you need to change when the live app is ready ----
+    const REDIRECT_URL = "https://www.google.com";
+    // -----------------------------------------------------------------
+
+    document.getElementById("fallback-link").href = REDIRECT_URL;
+
+    let secondsLeft = 5;
+    const countEl = document.getElementById("count");
+
+    const timer = setInterval(() => {
+      secondsLeft -= 1;
+      if (secondsLeft <= 0) {
+        clearInterval(timer);
+        window.location.href = REDIRECT_URL;
+        return;
+      }
+      countEl.textContent = secondsLeft;
+    }, 1000);
+
+    document.getElementById("go").addEventListener("click", () => {
+      clearInterval(timer);
+      window.location.href = REDIRECT_URL;
+    });
+  </script>
+
+</body>
+</html>
